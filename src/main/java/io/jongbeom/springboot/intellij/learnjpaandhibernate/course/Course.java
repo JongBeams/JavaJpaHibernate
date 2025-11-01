@@ -1,9 +1,17 @@
 package io.jongbeom.springboot.intellij.learnjpaandhibernate.course;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity //(name = "Course")//name 설정으로 직접매핑할 수 도 있다.
 public class Course {
+
+    @Id
     private long id;
+    //@Column(name="name") //엔티티와 이름이 같기때문에 컬럼 어노테이션을 설정할 필요가 없다.
     private  String name;
+    //@Column(name ="author")
     private String author;
 
     //인수 없는 생성자
