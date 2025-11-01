@@ -1,5 +1,6 @@
 package io.jongbeom.springboot.intellij.learnjpaandhibernate.course.jdbc;
 
+import io.jongbeom.springboot.intellij.learnjpaandhibernate.course.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,14 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
     //스프링 컨텍스트가 초기화된 직후(빈 생성/주입 완료 후) 자동 호출되는 스타트업 훅
     @Override
     public void run(String... args) throws Exception {
-        repository.insert();
+        repository.insert(new Course(1,"LearnDB","JangJongBeom"));
+        repository.insert(new Course(2,"LearnAWS","JangJongBeom"));
+        repository.insert(new Course(3,"LearnDevOps","JangJongBeom"));
+
+        repository.deleteById(1);
+
+        System.out.println(repository.findById(2));
+        System.out.println(repository.findById(3));
+
     }
 }
